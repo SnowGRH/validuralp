@@ -20,15 +20,15 @@ class NumberUrlapElem{
           console.log(this.#leiro.regex.min)
           console.log(this.#value)
           console.log(this.#leiro.regex.max)
-          if (this.#leiro.regex.min < this.#value && this.#value < this.#leiro.regex.max) {
-              this.#valid = true;
-              this.validElem.removeClass("elrejt")
-              this.invalidElem.addClass("elrejt")
-          }else{
-              this.#valid = false;
-              this.validElem.removeClass("elrejt")
-              this.invalidElem.addClass("elrejt")
-          }
+          if (this.#leiro.regex.min <= this.#value && this.#value <= this.#leiro.regex.max) {
+            this.#valid = true;
+            this.validElem.removeClass("elrejt");
+            this.invalidElem.addClass("elrejt");
+        } else {
+            this.#valid = false;
+            this.invalidElem.removeClass("elrejt");
+            this.validElem.addClass("elrejt");
+        }
         })
     }
     get valid(){
