@@ -22,11 +22,13 @@ class UrlapView {
         console.log("valid az ur");
         this.#urlapElemlista.forEach((elem) => {
             this.#urlapAdat[elem.key]=elem.value;
+            this.#urlapAdat[elem.key]=elem.value;
           });
+          this.#esemeny("valid");
       } else {
         console.log("nem");
       }
-      console.log(this.#urlapAdat);
+      
     });
   }
   #urlapOsszerak() {
@@ -39,7 +41,8 @@ class UrlapView {
           break;
         case "number":
           // this.#numberElem(key);
-          new NumberUrlapElem(this.fromElem, this.#leiro[key], key);
+          this.#urlapElemlista.push(
+          new NumberUrlapElem(this.fromElem, this.#leiro[key], key));
           break;
         default:
           console.log("nincs kész az");
@@ -48,5 +51,9 @@ class UrlapView {
     let txt = "<input type='submit' id='sumbit' value='Küldés'>";
     this.fromElem.append(txt);
   }
+  #esemeny(esemenynev){
+    const esemenyem = new CustomEvent(esemenynev, {detail: this.#urlapAdat});
+    window.dispatchEvent(esemenyem);
+}
 }
 export default UrlapView;
